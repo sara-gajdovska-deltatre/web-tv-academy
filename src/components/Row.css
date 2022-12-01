@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+  margin-left: 2px;
+}
+
+.column {
+  float: left;
+}
+
+img {
+  width: 200px;
+  height: 300px;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}

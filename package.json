@@ -2,18 +2,26 @@
   "name": "react-tv-final-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
+    "@noriginmedia/react-spatial-navigation": "^2.12.9",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hooks": "^1.0.1",
+    "react-js-spatial-navigation": "^0.0.5",
+    "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
+    "shaka-player-react": "^1.1.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "tizentool": "node tizentool.js",
+    "package:tizen": "npm run tizentool -- pack build build/tizen.wgt --sign",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
