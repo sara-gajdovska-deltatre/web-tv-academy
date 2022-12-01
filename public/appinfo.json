@@ -1,0 +1,24 @@
+{
+  "id": "com.deltatre.academy",
+  "version": "0.0.0",
+  "vendor": "Sara Gajdovska",
+  "type": "web",
+  "main": "index.html",
+  "title": "WebTvAcademy",
+  "icon": "icon-80.png",
+  "largeIcon": "icon-130.png",
+  "bgImage": "splash.jpg",
+  "splashBackground": "splash.jpg",
+  "iconColor": "#0099f7",
+  "transparent": false,
+  "visible": true,
+  "uiRevision": 2,
+  "resolution": "1920x1080",
+  "disableBackHistoryAPI": true,
+  "class": {
+    "hidden": false
+  },
+  "accessibility": {
+    "supportsAudioGuidance": true
+  }
+}

@@ -4,13 +4,11 @@ import SpatialNavigation, { Focusable } from "react-js-spatial-navigation";
 import ShakaPlayer from "shaka-player-react";
 import "shaka-player/dist/controls.css";
 import { useState } from "react";
+import FocusableButton from "./FocusableButton";
 
 const Movie = () => {
   const controllerRef = useRef(null);
   const [videoElement, setVideoElement] = useState();
-  const [isBackButtonActive, setIsBackButtonActive] = useState(false);
-  const [isPlayButtonActive, setIsPlayButtonActive] = useState(false);
-  const [isPauseButtonActive, setIsPauseButtonActive] = useState(false);
 
   const navigate = useNavigate();
 
@@ -34,58 +32,36 @@ const Movie = () => {
     setVideoElement(videoElement);
   }, []);
 
-  console.log({ videoElement });
+  const onPlay = () => {
+    videoElement.play();
+  };
+
+  const onPause = () => {
+    videoElement.pause();
+  };
+
+  const onRewind = () => {
+    videoElement.currentTime -= 10;
+  };
+
+  const onFastForward = () => {
+    videoElement.playbackRate += 2;
+  };
+
+  const onBack = () => {
+    navigate("/");
+  };
 
   return (
     <div>
       <SpatialNavigation>
         <h1>{title}</h1>
         <h2>{subtitle}</h2>
-        <Focusable
-          onFocus={() => setIsBackButtonActive(true)}
-          onUnfocus={() => setIsBackButtonActive(false)}
-          onClickEnter={() => navigate("/")}
-          active="active"
-        >
-          <button
-            style={{
-              backgroundColor: isBackButtonActive ? "red" : "",
-              color: isBackButtonActive ? "white" : "",
-            }}
-          >
-            Back
-          </button>
-        </Focusable>
-        <Focusable
-          onClickEnter={() => videoElement.play()}
-          active="active"
-          onFocus={() => setIsPlayButtonActive(true)}
-          onUnfocus={() => setIsPlayButtonActive(false)}
-        >
-          <button
-            style={{
-              backgroundColor: isPlayButtonActive ? "red" : "",
-              color: isPlayButtonActive ? "white" : "",
-            }}
-          >
-            Play
-          </button>
-        </Focusable>
-        <Focusable
-          onClickEnter={() => videoElement.pause()}
-          active="active"
-          onFocus={() => setIsPauseButtonActive(true)}
-          onUnfocus={() => setIsPauseButtonActive(false)}
-        >
-          <button
-            style={{
-              backgroundColor: isPauseButtonActive ? "red" : "",
-              color: isPlayButtonActive ? "white" : "",
-            }}
-          >
-            Pause
-          </button>
-        </Focusable>
+        <FocusableButton text="Back" onClick={onBack} />
+        <FocusableButton text="Play" onClick={onPlay} />
+        <FocusableButton text="Forward" onClick={onFastForward} />
+        <FocusableButton text="Rewind 10 sec" onClick={onRewind} />
+        <FocusableButton text="Pause" onClick={onPause} />
         <Focusable>
           <ShakaPlayer ref={controllerRef} src={sources} />
         </Focusable>

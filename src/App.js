@@ -1,17 +1,22 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  HashRouter,
+} from "react-router-dom";
 import Home from "./components/Home";
 import Movie from "./components/Movie";
 
 function App() {
   return (
     <div className="App">
-      <Router>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/movie" element={<Movie />} />
         </Routes>
-      </Router>
+      </HashRouter>
     </div>
   );
 }
